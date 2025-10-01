@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - PRO Sports</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <a href="inicio.php" class="logo">
+        <img src="img/Prosportes.png.png" alt="Logo">
+    </a>
+    
+    <nav class="menu-navegacao">
+        <ul>
+            <li><a href="inicio.html">Início</a></li>
+            <li><a href="Atletas.html" class="locked" id="atletasLink"><i class="fas fa-lock"></i>Atletas</a></li>
+            <li><a href="Fotos.html" class="locked" id="fotosLink"><i class="fas fa-lock"></i>Fotos</a></li>
+            <li><a href="Vídeos.html" class="locked" id="videosLink"><i class="fas fa-lock"></i>Vídeos</a></li>
+        </ul>
+    </nav>
+
+    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 5px;">
+        <a href="Cadastrar.html">
+            <button style="background-color: black; color: white; border: 2px solid yellow; padding: 10px 20px; border-radius: 5px;">
+                Cadastrar
+            </button>
+        </a>
+    </div>
+</header>
+
+<section id="inicio" class="intro">
+    <div class="content"></div>
+</section>
+
+<div class="card">
+    <div class="login-form">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu email" name="email" required autocomplete="email">
+            </div>
+            <div class="mb-3" style="position: relative;"> <label for="password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="senha" required autocomplete="current-password">
+                <span class="password-toggle" id="togglePassword">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+            <div class="mb-3 d-flex align-items-center">
+                <div class="form-check" style="margin-left: 50px;">
+                    <input type="radio" id="contratante" name="perfil" value="contratante" class="form-check-input">
+                    <label for="contratante" class="form-check-label">Contratante</label>
+                </div>
+                <div class="form-check" style="margin-left: 20px;">
+                    <input type="radio" id="atleta" name="perfil" value="atleta" class="form-check-input">
+                    <label for="atleta" class="form-check-label">Atleta</label>
+                </div>
+            </div>
+            <p><a href="redefinir_senha.html">Esqueci a senha?</a></p>
+            <button type="submit" id="entrarBtn" style="background-color: black; color: white; border: 2px solid yellow; padding: 10px 20px; border-radius: 5px;">
+                Entrar
+            </button>
+        </form>
+        <div id="mensagemLogin" class="mensagem-login oculto"></div>
+    </div>
+</div>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-color: #f2f2f2;
+        background-image: url('img/Design\ sem\ nome\ \(1\).png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    nav ul li a.locked {
+        color: #888;
+        cursor: default;
+    }
+
+    nav ul li a.locked:hover {
+        color: #888;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #000000;
+        padding: 15px 30px;
+        color: #fff;
+        position: relative;
+    }
+
+    .logo img {
+        height: 50px;
+        margin-top: 20px;
+    }
+
+    .menu-navegacao {
+        position: absolute;
+        top: 18px;
+        left: 450px;
+    }
+
+    .menu-navegacao ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu-navegacao ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    .menu-navegacao ul li a:hover {
+        color: yellow;
+    }
+
+    .conteudo {
+        position: relative;
+        z-index: 1;
+        color: white;
+        text-align: center;
+    }
+
+    .card {
+        height: 450px;
+        width: 400px;
+        margin: auto;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #000000;
+        text-align: center;
+        border-radius: 10px;
+        color: var(--text-color, #ffffff);
+        box-shadow: 0px 0px 20px 5px #ffffff;
+    }
+
+    .card::after,
+    .card::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        z-index: -1;
+        padding: 2px;
+        border-radius: 10px;
+        background-image: conic-gradient(from var(--angle), #FFFF00, transparent, #FFFF00, transparent, #FFFF00);
+    }
+
+    .login-form {
+        width: 390px;
+        height: 440px;
+        padding: 40px;
+        box-sizing: border-box;
+    }
+
+    .login-form .mb-3 {
+        text-align: left;
+    }
+
+    .login-form .mb-3:nth-of-type(2) {
+        position: relative;
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(09%);
+        cursor: pointer;
+        color: #555;
+        font-size: 1.2rem;
+    }
+
+    .login-form h1 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: var(--text-color, #ffffff);
+        text-align: center;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .mensagem-login {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        z-index: 1000;
+        text-align: center;
+    }
+
+    .mensagem-login.sucesso {
+        color: green;
+    }
+
+    .mensagem-login.erro {
+        color: red;
+    }
+
+    .oculto {
+        display: none;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('loginForm');
+        const entrarBtn = document.getElementById('entrarBtn');
+        const mensagemLoginDiv = document.getElementById('mensagemLogin');
+        const passwordInput = document.getElementById('password');
+        const togglePassword = document.getElementById('togglePassword');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+        }
+
+        entrarBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
+            const senha = passwordInput.value.trim();
+
+            if (email === '' || senha === '') {
+                mensagemLoginDiv.textContent = 'Por favor, preencha todos os campos.';
+                mensagemLoginDiv.className = 'mensagem-login erro';
+                mensagemLoginDiv.classList.remove('oculto');
+                return;
+            }
+
+            const perfilSelected = document.querySelector('input[name="perfil"]:checked');
+            if (!perfilSelected) {
+                mensagemLoginDiv.textContent = 'Por favor, selecione um perfil (Contratante ou Atleta).';
+                mensagemLoginDiv.className = 'mensagem-login erro';
+                mensagemLoginDiv.classList.remove('oculto');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('senha', senha);
+            formData.append('perfil', perfilSelected.value);
+
+            fetch('Entrar.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => {
+                        console.error('Erro de rede ou servidor:', text);
+                        throw new Error(`Erro HTTP! Status: ${response.status}. Resposta: ${text}`);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    mensagemLoginDiv.textContent = 'Bem vindo ao PRO sports!';
+                    mensagemLoginDiv.className = 'mensagem-login sucesso';
+                    mensagemLoginDiv.classList.remove('oculto');
+
+                    const tipoUsuario = data.tipo_usuario;
+                    setTimeout(() => {
+                        if (tipoUsuario === 'atleta') {
+                            window.location.href = 'Pagina_atleta.php';
+                        } else if (tipoUsuario === 'contratante') {
+                            window.location.href = 'Pagina_contratante.php';
+                        } else {
+                            window.location.href = 'inicio.php';
+                        }
+                    }, 1500);
+                } else {
+                    mensagemLoginDiv.textContent = data.message || 'Credenciais inválidas. Por favor, tente novamente.';
+                    mensagemLoginDiv.className = 'mensagem-login erro';
+                    mensagemLoginDiv.classList.remove('oculto');
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+                mensagemLoginDiv.textContent = 'Erro ao conectar com o servidor. Por favor, tente novamente.';
+                mensagemLoginDiv.className = 'mensagem-login erro';
+                mensagemLoginDiv.classList.remove('oculto');
+            });
+        });
+
+       
+        const atletasLink = document.getElementById('atletasLink');
+        const fotosLink = document.getElementById('fotosLink');
+        const videosLink = document.getElementById('videosLink');
+
+     
+        function preventLockedLink(event) {
+            event.preventDefault();
+            alert('Esta seção está bloqueada. Faça login para acessá-la.');
+        }
+
+        if (atletasLink) atletasLink.addEventListener('click', preventLockedLink);
+        if (fotosLink) fotosLink.addEventListener('click', preventLockedLink);
+        if (videosLink) videosLink.addEventListener('click', preventLockedLink);
+    });
+</script>
+</body>
+</html>

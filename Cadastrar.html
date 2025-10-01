@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="img/Prosportes.png.png" alt="Logo">
+        </a>
+        <nav class="menu-navegacao">
+            <ul>
+                <li><a href="inicio.html">Início</a></li>
+                <li><a href="Atletas.html" class="locked" id="atletasLink"><i class="fas fa-lock"></i>Atletas</a></li>
+                <li><a href="fotos.html" class="locked" id="fotosLink"><i class="fas fa-lock"></i>Fotos</a></li>
+                <li><a href="Vídeos.html" class="locked" id="videosLink"><i class="fas fa-lock"></i>Vídeos</a></li>
+            </ul>
+        </nav>
+        <div style="display: flex; gap: 15px; justify-content: center; margin-top: 5px;">
+            <a href="Entrar.html">
+                <button style="background-color: black; color: white; border: 2px solid yellow; padding: 10px 20px; border-radius: 5px;">
+                    Entrar
+                </button>
+            </a>
+        </div>
+    </header>
+
+    <section id="inicio" class="intro">
+        <div class="content"></div>
+    </section>
+
+    <div class="card">
+        <div class="login-form">
+            <h1>Cadastro</h1>
+            <form id="cadastroForm" method="POST">
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuário</label>
+                    <input type="text" class="form-control" name="usuario" placeholder="Digite seu Usuário" required autocomplete="username">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Digite seu Email" required autocomplete="email">
+                </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" name="senha" placeholder="Digite sua senha" required autocomplete="new-password">
+                </div>
+
+                <div class="mb-3 d-flex align-items-center">
+                    <div class="form-check" style="margin-left: 50px;">
+                        <input type="radio" id="contratante" name="perfil" value="contratante" class="form-check-input" required>
+                        <label for="contratante" class="form-check-label">Contratante</label>
+                    </div>
+                    <div class="form-check" style="margin-left: 20px;">
+                        <input type="radio" id="atleta" name="perfil" value="atleta" class="form-check-input" required>
+                        <label for="atleta" class="form-check-label">Atleta</label>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" id="entrarBtn" style="background-color: black; color: white; border: 2px solid yellow; padding: 10px 20px; border-radius: 5px;">
+                        Cadastrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #f2f2f2;
+            background-image: url('img/Design sem nome (1).png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        nav ul li a.locked {
+            color: #888;
+            cursor: default;
+        }
+        nav ul li a.locked:hover {
+            color: #888;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #000000;
+            padding: 15px 30px;
+            color: #fff;
+            position: relative;
+        }
+        .logo img {
+            height: 50px;
+            margin-top: 20px;
+        }
+        .menu-navegacao {
+            position: absolute;
+            top: 18px;
+            left: 450px;
+        }
+        .menu-navegacao ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+        .menu-navegacao ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .menu-navegacao ul li a:hover {
+            color: rgb(233, 233, 22);
+        }
+        .conteudo {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+        }
+        .card {
+            height: 500px;
+            width: 400px;
+            margin: auto;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+            text-align: center;
+            border-radius: 10px;
+            color: var(--text-color, #ffffff);
+            box-shadow: 0px 0px 20px 5px #ffffff;
+        }
+        .card::after,
+        .card::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            z-index: -1;
+            padding: 2px;
+            border-radius: 10px;
+            background-image: conic-gradient(from var(--angle), #FFFF00, transparent, #FFFF00, transparent, #FFFF00);
+            animation: 7s spin linear infinite;
+        }
+        .login-form {
+            width: 390px;
+            height: 440px;
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+        .login-form h1 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: var(--text-color, #ffffff);
+            text-align: center;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .alerta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .alerta.sucesso {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+        .alerta.erro {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
+        .alerta i {
+            font-size: 20px;
+        }
+        .mensagem-cadastro {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 1000;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .mensagem-cadastro.visivel {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mensagem-cadastro .simbolo {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .mensagem-cadastro .texto-mensagem {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .mensagem-cadastro button {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .sucesso { color: #28a745; }
+        .erro { color: #dc3545; }
+    </style>
+
+    <div id="mensagemCadastro" class="mensagem-cadastro oculto">
+        <span class="simbolo"></span>
+        <div class="texto-mensagem"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cadastroForm = document.getElementById('cadastroForm');
+            const mensagemCadastroDiv = document.getElementById('mensagemCadastro');
+            const mensagemSimbolo = mensagemCadastroDiv.querySelector('.simbolo');
+            const mensagemTexto = mensagemCadastroDiv.querySelector('.texto-mensagem');
+
+            function mostrarMensagem(tipo, mensagem, perfil = null) {
+                mensagemSimbolo.textContent = tipo === 'sucesso' ? '✔️' : '❌';
+                mensagemSimbolo.className = `simbolo ${tipo}`;
+                mensagemTexto.textContent = mensagem;
+
+                mensagemCadastroDiv.classList.remove('oculto');
+                mensagemCadastroDiv.classList.remove('sucesso', 'erro');
+                mensagemCadastroDiv.classList.add(tipo);
+                mensagemCadastroDiv.classList.add('visivel');
+
+                setTimeout(() => {
+                    mensagemCadastroDiv.classList.remove('visivel');
+                    mensagemCadastroDiv.classList.add('oculto');
+                    mensagemTexto.textContent = '';
+                }, 5000);
+
+                if (tipo === 'sucesso' && perfil) {
+                    setTimeout(() => {
+                        if (perfil === 'atleta') { 
+                            window.location.href = 'Pagina_atleta.php';
+                        } else if (perfil === 'contratante') {
+                            window.location.href = 'Pagina_contratante.php';
+                        }
+                    }, 1500);
+                }
+            }
+
+            cadastroForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(cadastroForm);
+                
+             
+                fetch('Cadastro.php', { 
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    const contentType = response.headers.get('content-type');
+                    if (contentType && contentType.includes('application/json')) {
+                        return response.json();
+                    } else {
+                        return response.text().then(text => {
+                            throw new Error('Erro: A resposta do servidor não é JSON. Conteúdo da resposta: ' + text);
+                        });
+                    }
+                })
+                .then(data => {
+                    if (data.success) {
+                        console.log('Dados recebidos do PHP:', data);
+                        console.log('Perfil retornado pelo PHP:', data.perfil);
+                        mostrarMensagem('sucesso', data.message, data.perfil);
+                    } else {
+                        mostrarMensagem('erro', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro na requisição:', error);
+                    mostrarMensagem('erro', 'Erro ao conectar com o servidor.');
+                });
+            });
+
+            const atletasLink = document.getElementById('atletasLink');
+            const fotosLink = document.getElementById('fotosLink');
+            const videosLink = document.getElementById('videosLink');
+
+            atletasLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Esta seção está bloqueada. Faça login para acessá-la.');
+            });
+
+            fotosLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Esta seção está bloqueada. Faça login para acessá-la.');
+            });
+
+            videosLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Esta seção está bloqueada. Faça login para acessá-la.');
+            });
+        });
+    </script>
+</body>
+</html>

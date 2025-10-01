@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início</title>
+    <link href="style.css" rel="stylesheet"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: white;
+            color: #000;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #000000;
+            padding: 8px 30px;
+            color: #fff;
+            height: 80px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 75x;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        .locked-link {
+            color: #888 !important;
+        }
+        
+        .locked-link:hover {
+            color: #888 !important;
+            cursor: default;
+        }
+
+        .header-buttons-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-buttons-group button {
+            background-color: black;
+            color: white;
+            border: 2px solid yellow;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .header-buttons-group button:hover {
+            background-color: yellow;
+            color: black;
+            border-color: yellow;
+        }
+
+        .destaque {
+            text-align: center;
+            padding: 5px 20px;
+            background-color: #eeea08;
+            color: #222;
+        }
+
+        #carouselExampleCaptions {
+            width: 100%;
+            max-height: 800px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            background-color: #000;
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .carousel-caption h5,
+        .carousel-caption p {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-control-prev,
+            .carousel-control-next {
+                display: none;
+            }
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+            .header-buttons-group {
+                margin-top: 15px;
+                flex-wrap: wrap;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        .atletas {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .atletas h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #222;
+        }
+
+        .banner-destaques {
+            width: 100%;
+            max-width: 1200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .cards-destaque-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .card-destaque {
+            background-color: #000000;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgb(238, 255, 0);
+            padding: 0;
+            max-width: 300px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            overflow: hidden;
+            color: white;
+            text-decoration: none;
+        }
+
+        .card-destaque:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .card-destaque img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px 16px 0 0;
+            margin-bottom: 0;
+        }
+
+        .card-destaque h3 {
+            margin: 15px 0 10px;
+            font-size: 1.6rem;
+            color: #eeff00;
+            padding: 0 15px;
+        }
+
+        .card-destaque p.modalidade {
+            font-size: 1.1rem;
+            color: #ccc;
+            padding: 0 15px 15px;
+            margin-top: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="img/Prosportes.png.png" alt="Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="inicio_contratante.html">Início</a></li>
+                <li><a href="Atletas_Cadastrados.html">Atletas</a></li>
+                <li><a href="Fotos_contratantes.html">Fotos</a></li>
+                <li><a href="Videos_contratante.html">Vídeos</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons-group"> 
+            <a href="Pagina_contratante.php">
+                <button>Meu perfil</button>
+            </a>
+            <a href="Entrar.html">
+                <button>Sair</button>
+            </a>
+        </div>
+    </header>
+
+    <section class="destaque">
+        <h1>Bem-vindo ao Pro Sports</h1>
+        <p>Os melhores atletas estão aqui! Confira nossos atletas, fotos e vídeos exclusivos.</p>
+    </section>
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="4000">
+                <img src="img/pro.png" class="d-block w-100" alt="img1">
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+                <img src="img/ChatGPT Image 24 de jun. de 2025, 09_07_11.png" class="d-block w-100" alt="img2">
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+                <img src="img/eu (1).png" class="d-block w-100" alt="img3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <section class="atletas">
+        <img src="img/pro (1).png" alt="Nossos Destaques" class="banner-destaques">
+        <div class="cards-destaque-container" id="destaqueAtletasContainer">
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const destaqueAtletasContainer = document.getElementById('destaqueAtletasContainer');
+            const linkAtletas = document.getElementById('linkAtletas');
+
+            linkAtletas.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                fetch('check_user_type.php')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na rede. Status: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.is_contratante) {
+                            linkAtletas.classList.remove('locked-link');
+                            window.location.href = this.href;
+                        } else {
+                            alert('Atletas não têm acesso a esta aba.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao verificar tipo de usuário:', error);
+                        alert('Ocorreu um erro ao verificar suas permissões. Por favor, tente novamente.');
+                    });
+            });
+
+            function criarCardDestaque(atleta) {
+                const cardLink = document.createElement('a');
+                if (atleta.id) {
+                    cardLink.href = `Pagina_atleta.php?user_id=${atleta.id}`;
+                } else {
+                    cardLink.href = "#";
+                }
+                
+                cardLink.classList.add('card-destaque');
+                cardLink.style.textDecoration = 'none';
+                cardLink.style.color = 'inherit';
+
+                const img = document.createElement('img');
+                img.src = atleta.foto_url || 'https://via.placeholder.com/300x220/000000/FFFFFF?text=Sem+Foto';
+                img.alt = atleta.nome;
+
+                const h3Nome = document.createElement('h3');
+                h3Nome.textContent = atleta.nome;
+
+                const pModalidade = document.createElement('p');
+                pModalidade.classList.add('modalidade');
+                pModalidade.textContent = atleta.modalidade;
+
+                cardLink.appendChild(img);
+                cardLink.appendChild(h3Nome);
+                cardLink.appendChild(pModalidade);
+
+                return cardLink;
+            }
+
+            function carregarAtletasDestaque() {
+                fetch('http://localhost/tcc/TCC/api/get_featured_athletes.php')
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.text().then(text => {
+                                throw new Error(`Erro HTTP! Status: ${response.status}. Resposta: ${text}`);
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        destaqueAtletasContainer.innerHTML = '';
+
+                        if (!Array.isArray(data) || data.length === 0) {
+                            destaqueAtletasContainer.innerHTML = '<p style="color: black; text-align: center; width: 100%;">Nenhum atleta em destaque encontrado.</p>';
+                            return;
+                        }
+                        data.forEach(atleta => {
+                            const card = criarCardDestaque(atleta);
+                            destaqueAtletasContainer.appendChild(card);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Erro ao carregar atletas em destaque:', error);
+                        destaqueAtletasContainer.innerHTML = `<p style="color: red; text-align: center; width: 100%;">Erro ao carregar atletas em destaque. Detalhes: ${error.message}</p>`;
+                    });
+            }
+
+            carregarAtletasDestaque();
+        });
+    </script>
+</body>
+</html>

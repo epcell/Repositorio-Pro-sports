@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos - Prosportes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; 
+            color: #000000; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 30px;
+            background-color: #070707;
+            box-shadow: 0 2px 5px #070707;
+        }
+
+        header .logo img {
+            height: 200px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        header h1 {
+            color: yellow;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: normal;
+            white-space: nowrap;
+        }
+
+        .header-right-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-voltar-header {
+            background-color: black;
+            color: white;
+            border: 2px solid yellow;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-voltar-header:hover {
+            background-color: yellow;
+            color: black;
+            border-color: black;
+        }
+
+        main {
+            padding: 20px;
+            flex-grow: 1;
+        }
+        
+        #gallery-area h2 {
+            color: #333;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin: 40px 0 30px 0;
+            text-align: center;
+            font-size: 2.2em;
+            position: relative;
+        }
+        
+        #gallery-area h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -2px;
+            width: 80px;
+            height: 3px;
+            background-color: yellow;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+            padding: 0 20px 50px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #000;
+            width: 280px;
+            height: 350px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-top {
+            flex: 1;
+            width: 100%;
+            overflow: hidden;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .card-top img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .card-bottom {
+            text-align: center;
+            padding: 15px 10px;
+            background-color: #333;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .card-bottom p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .card-bottom p.sport {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .no-photos-message {
+            text-align: center;
+            padding: 50px;
+            color: #8e8e8e;
+            font-size: 1.1em;
+        }
+
+        #loading-message {
+            text-align: center;
+            padding: 30px;
+            font-size: 1.2em;
+            color: #8e8e8e;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            margin-top: auto;
+        }
+        
+        @media (max-width: 600px) {
+            header {
+                padding: 15px;
+                flex-direction: column;
+                height: auto;
+            }
+            .header-right-content {
+                flex-direction: column;
+                gap: 5px;
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+            header h1 {
+                font-size: 1.3rem;
+                position: static;
+                transform: none;
+                order: 1;
+            }
+            .btn-voltar-header {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                order: 2;
+            }
+            header .logo {
+                order: 0;
+            }
+            #gallery-area h2 { font-size: 1.8em; margin-top: 30px;}
+            .gallery { 
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                width: 90%;
+                max-width: 300px;
+            }
+            main { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="img/Prosportes.png.png" alt="Logo Prosportes">
+        </a>
+        
+        <h1>Galeria de Fotos</h1> 
+
+        <div class="header-right-content">
+            <a href="inicio.php" class="btn-voltar-header">Voltar </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="gallery-area">
+            <h2>Fotos dos Atletas</h2>
+            <div id="gallery" class="gallery">
+                <p id="loading-message">Carregando fotos...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Prosportes. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryDiv = document.getElementById('gallery');
+            const loadingMessage = document.getElementById('loading-message');
+
+            const loadPhotosFromBackend = async () => {
+                loadingMessage.style.display = 'block';
+                galleryDiv.innerHTML = '';
+
+                try {
+                    const response = await fetch('api/get_all_posts.php?type=foto'); 
+                    const data = await response.json();
+
+                    if (data.success && data.posts.length > 0) {
+                        const photos = data.posts;
+
+                        if (photos.length > 0) {
+                            photos.forEach(post => {
+                                const cardLink = document.createElement('a');
+                                cardLink.href = `Pagina_atleta.php?user_id=${post.user_id}`;
+                                cardLink.classList.add('card');
+                                
+                                const cardTop = document.createElement('div');
+                                cardTop.classList.add('card-top');
+                                const imageElement = document.createElement('img');
+                                imageElement.src = post.media_url; 
+                                imageElement.alt = post.description || 'Foto do atleta';
+                                cardTop.appendChild(imageElement);
+
+                                const cardBottom = document.createElement('div');
+                                cardBottom.classList.add('card-bottom');
+                                const pAthlete = document.createElement('p');
+                                pAthlete.classList.add('name');
+                                pAthlete.textContent = post.athleteName;
+                                const pDescription = document.createElement('p');
+                                pDescription.classList.add('sport');
+                                pDescription.textContent = post.athleteDescription || 'Sem descrição';
+                                cardBottom.appendChild(pAthlete);
+                                cardBottom.appendChild(pDescription);
+
+                                cardLink.appendChild(cardTop);
+                                cardLink.appendChild(cardBottom);
+                                galleryDiv.appendChild(cardLink);
+                            });
+                        } else {
+                            galleryDiv.innerHTML = '<p class="no-photos-message">Nenhuma foto encontrada na galeria ainda. Peça para os atletas publicarem!</p>';
+                        }
+                    } else {
+                        galleryDiv.innerHTML = '<p class="no-photos-message">Nenhuma foto encontrada na galeria ainda. Peça para os atletas publicarem!</p>';
+                    }
+                } catch (error) {
+                    console.error('Erro ao carregar as fotos:', error);
+                    galleryDiv.innerHTML = '<p class="no-photos-message" style="color: red;">Erro ao carregar a galeria de fotos. Verifique sua conexão ou tente novamente mais tarde.</p>';
+                } finally {
+                    loadingMessage.style.display = 'none';
+                }
+            }; 
+
+            loadPhotosFromBackend();
+        });
+    </script>
+</body>
+</html>
